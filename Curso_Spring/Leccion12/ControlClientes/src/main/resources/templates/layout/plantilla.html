@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
+<head>
+    <title>Plantilla</title>
+    <meta charset="UTF-8"/>
+</head>
+    <body>
+        <header th:fragment="header"> <!-- Con este fragment lo que podemos hacer es reutilizar este bloque de codigo en otras partes de la pagina -->
+            <h1 th:text="#{plantilla.titulo}">Titulo</h1> <!-- #{} lo que hace es tomar las propiedades del archivo messages.properties, y podemos cambiarle el texto dentro de las etiquetes h1 -->
+        </header>
+
+    <footer th:fragment="footer">
+        <div>
+            <br/>
+            <a th:href="@{/(lang=es)}">Página en español</a>
+            <a th:href="@{/(lang=en)}">English page</a>
+        </div>
+        <p>[[#{plantilla.pie-pagina}]] <a href="http://www.facebook.com">facebook</a></p> <!-- Hacerlo de esta manera, quita la dependencia
+         de tenerlo asociado al atributo, por lo que ahora es independiente y no altera el link de este texto-->
+
+        <form method="POST" th:action="@{/logout}">
+            <b>User: </b><span sec:authentication="name">Usuario que hizo login</span>|
+            <b>Roles: </b><span sec:authentication="principal.authorities">Roles</span>
+            <a href="#" onclick="this.parentNode.submit()">Cerrar Sesión</a>
+        </form>
+
+    </footer>
+    </body>
+</html>
