@@ -1,0 +1,6 @@
+mx\com\gm\servicio\PersonaService.class
+mx\com\gm\servicio\personaServiceImpl.class
+mx\com\domain\Persona.class
+mx\com\gm\dao\PersonaDao.class
+mx\com\gm\web\ControladorInicio.class
+mx\com\HolaMundoSpringApplication.class

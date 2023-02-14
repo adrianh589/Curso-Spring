@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xml:ns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Datos de la persona</title>
+</head>
+<body>
+
+    <h1>Soy la página de agregar persona</h1>
+    <a th:href="@{/}">Regresar</a>
+
+    <br/>
+
+    <form th:action="@{/guardar}" method="post" th:object="${persona}"> <!-- Con este th:object asociamos el formulario al objeto de tipo persona -->
+
+        <input type="hidden" name="idPersona" th:field="*{idPersona}"> <!-- Establecer este campo nos permite setear el idPersona para poderlo editar y evitar que se guarde un nuevo registro -->
+
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" th:field="*{nombre}"> <!-- Este acterisco toma el objeto de persona y entre llaves se escribe el atributo que se quiere asociar -->
+        <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></span>
+
+        <br>
+
+        <label for="apellido">Apellido: </label>
+        <input type="text" id="apellido" name="nombre" th:field="*{apellido}">
+        <span th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}"></span>
+
+        <br>
+
+        <label for="nombre">Email: </label>
+        <input type="text" id="email" name="email" th:field="*{email}">
+        <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+
+        <br>
+
+        <label for="nombre">Telefono: </label>
+        <input type="text" id="telefono" name="telefono" th:field="*{telefono}">
+
+        <br>
+
+        <input type="submit" value="Guardar">
+    </form>
+
+</body>
+</html>

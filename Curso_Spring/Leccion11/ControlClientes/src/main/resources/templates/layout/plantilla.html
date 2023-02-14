@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
 <head>
     <title>Plantilla</title>
     <meta charset="UTF-8"/>
@@ -19,6 +22,8 @@
          de tenerlo asociado al atributo, por lo que ahora es independiente y no altera el link de este texto-->
 
         <form method="POST" th:action="@{/logout}">
+            <b>User: </b><span sec:authentication="name">Usuario que hizo login</span>|
+            <b>Roles: </b><span sec:authentication="principal.authorities">Roles</span>
             <a href="#" onclick="this.parentNode.submit()">Cerrar Sesión</a>
         </form>
 

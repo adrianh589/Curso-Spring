@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Plantilla</title>
+    <meta charset="UTF-8"/>
+</head>
+    <body>
+        <header th:fragment="header"> <!-- Con este fragment lo que podemos hacer es reutilizar este bloque de codigo en otras partes de la pagina -->
+            <h1 th:text="#{plantilla.titulo}">Titulo</h1> <!-- #{} lo que hace es tomar las propiedades del archivo messages.properties, y podemos cambiarle el texto dentro de las etiquetes h1 -->
+        </header>
+
+    <footer th:fragment="footer">
+        <p>[[#{plantilla.pie-pagina}]] <a href="http://www.facebook.com">facebook</a></p> <!-- Hacerlo de esta manera, quita la dependencia
+         de tenerlo asociado al atributo, por lo que ahora es independiente y no altera el link de este texto-->
+    </footer>
+    </body>
+</html>

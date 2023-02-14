@@ -1,0 +1,41 @@
+<!-- En spring, para crear los archivos o paginas html, se hace en la carpeta de templates -->
+
+<!DOCTYPE html>
+<!-- Para mandar informacion dinamica con thymeleaf lo que se debe hacer es xmlns:th="http://www.thymeleaf.org" -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio</title>
+</head>
+<body>
+<header th:replace="layout/plantilla :: header"></header> <!-- Asi accedemos al header que nosotros hicimos mediante el directorio layout/plantilla.html -->
+<a th:href="@{/agregar}">[[#{persona.crear}]]</a>
+
+<div th:if="${listaPersonas != null and !listaPersonas.isEmpty()}">
+    <table border="1">
+        <tr>
+            <th th:text="#{persona.nombre}">Nombre</th>
+            <th>[[#{persona.apellido}]]</th>
+            <th th:text="#{persona.email}">Email</th>
+            <th>[[#{persona.telefono}]]</th>
+            <th th:text="#{tabla.modificar}" colspan="2">Modificar</th>
+        </tr>
+
+        <tr th:each="persona : ${listaPersonas}">
+            <td th:text="${persona.nombre}"></td>
+            <td th:text="${persona.apellido}"></td>
+            <td th:text="${persona.email}"></td>
+            <td th:text="${persona.telefono}"></td>
+            <td><a th:href="@{/editar/} + ${persona.idPersona}" th:text="Editar"></a></td><!-- Forma path variable para asignar id -->
+            <td><a th:href="@{/eliminar(idPersona=${persona.idPersona})}" th:text="Eliminar"></a></td><!-- Forma Query parameter -->
+        </tr>
+    </table>
+</div>
+
+<div th:if="${listaPersonas == null or listaPersonas.isEmpty()}">
+    <span>[[#{persona.lista-vacia}]]</span>
+</div>
+
+<footer th:replace="layout/plantilla :: footer"></footer>
+</body>
+</html>

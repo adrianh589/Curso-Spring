@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Plantilla</title>
+    <meta charset="UTF-8"/>
+</head>
+    <body>
+        <header th:fragment="header"> <!-- Con este fragment lo que podemos hacer es reutilizar este bloque de codigo en otras partes de la pagina -->
+            <h1>Control de Clientes</h1>
+        </header>
+
+    <footer th:fragment="footer">
+        <p>Derechos reservados</p>
+    </footer>
+    </body>
+</html>
