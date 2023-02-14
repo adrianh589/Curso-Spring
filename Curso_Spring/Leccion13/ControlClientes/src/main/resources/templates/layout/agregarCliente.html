@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar Cliente</title>
+</head>
+<body>
+
+    <section th:fragment="agregarCliente">
+        <div id="agregarCliente" class="modal fade">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header bg-info text-white">
+                        <h5 class="modal-title" th:text="#{accion.agregar}">
+                            Texto que sera reemplazado
+                        </h5>
+                        <button class="close" data-dismiss="modal">
+                            <span>&times;</span>
+                        </button>
+                    </div>
+                    <form th:action="@{/guardar}" th:object="${persona}" method="post" class="was-validated">
+                        <div class="modal-body">
+                            <!-- Nombre -->
+                            <div class="form-group">
+                                <label for="nombre" th:text="#{persona.nombre}">Nombre</label>
+                                <input type="text" class="form-control" name="nombre" id="nombre" required="required">
+                            </div>
+
+                            <!-- Apellido -->
+                            <div class="form-group">
+                                <label for="apellido" th:text="#{persona.apellido}">Apellido</label>
+                                <input type="text" class="form-control" name="apellido" id="apellido" required="required">
+                            </div>
+
+                            <!-- Email -->
+                            <div class="form-group">
+                                <label for="email" th:text="#{persona.email}">Email</label>
+                                <input type="email" class="form-control" name="email" id="email" required="required">
+                            </div>
+
+                            <!-- Telefono -->
+                            <div class="form-group">
+                                <label for="telefono" th:text="#{persona.telefono}">Telefono</label>
+                                <input type="text" class="form-control" name="telefono" id="telefono">
+                            </div>
+
+                            <!-- Saldo -->
+                            <div class="form-group">
+                                <label for="saldo" th:text="#{persona.saldo}">Saldo</label>
+                                <input type="number" class="form-control" name="saldo" id="saldo" required="required" step="any">
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button class="btn btn-primary" type="submit" th:text="#{accion.guardar}"> Guardar </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

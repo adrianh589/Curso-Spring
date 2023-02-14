@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xml:ns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Botones editar</title>
+</head>
+<body>
+  <section th:fragment="botonesEditar">
+    <div id="actions" class="py-4 mb-4 bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <a th:href="@{/}" class="btn btn-light btn-block">
+              <i class="fas fa-arrow-left"></i>[[#{accion.regresar}]]
+            </a>
+          </div>
+          <div class="col-md-3">
+            <button type="submit" class="btn btn-success btn-block">
+              <i class="fas fa-check"></i>[[#{accion.guardar}]]
+            </button>
+          </div>
+          <div class="col-md-3">
+            <a th:href="@{/eliminar(idPersona=${persona.idPersona})}" class="btn btn-block btn-danger">
+              <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
